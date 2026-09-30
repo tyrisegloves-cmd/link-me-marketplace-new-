@@ -19,6 +19,7 @@ import { MarketplacePage } from './pages/MarketplacePage';
 import { AboutPage } from './pages/AboutPage';
 import { TestimonialsPage } from './pages/TestimonialsPage';
 import { ContactPage } from './pages/ContactPage';
+import { AuthPage } from './pages/AuthPage';
 
 export default function App() {
   const [history, setHistory] = useState<PageType[]>(['home']);
@@ -247,16 +248,18 @@ export default function App() {
             </RippleButton>
 
             <RippleButton
-              rippleColor="rgba(37,99,235,0.25)"
-              className="hidden sm:block rounded-[11px] border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-4 py-[7px] text-[13.5px] font-[620] transition-colors cursor-pointer"
+              rippleColor="rgba(255,255,255,0.35)"
+              onClick={(e) => triggerWave(e, 'auth')}
+              className={`flex items-center gap-2 rounded-xl px-3.5 sm:px-4 py-2 text-[13px] sm:text-[13.5px] font-[650] transition-all cursor-pointer shadow-md ${
+                currentPage === 'auth'
+                  ? 'bg-blue-700 text-white shadow-blue-900/30 ring-2 ring-blue-400/40'
+                  : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900/20 hover:shadow-blue-600/30'
+              }`}
             >
-              Log in
-            </RippleButton>
-            <RippleButton
-              rippleColor="rgba(255,255,255,0.40)"
-              className="rounded-[11px] bg-blue-600 hover:bg-blue-500 px-4 py-[9px] text-[13.5px] font-[620] text-white shadow-md shadow-blue-900/20 transition-all cursor-pointer"
-            >
-              Sign Up
+              <svg className="h-4 w-4 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+              </svg>
+              <span>Sign In / Sign Up</span>
             </RippleButton>
           </div>
         </div>
@@ -291,6 +294,8 @@ export default function App() {
                 ? 'Testimonials'
                 : history[history.length - 2] === 'contact'
                 ? 'Contact Us'
+                : history[history.length - 2] === 'auth'
+                ? 'Sign In / Up'
                 : 'Marketplace'}
             </RippleButton>
           </motion.div>
@@ -687,6 +692,7 @@ export default function App() {
       {currentPage === 'about' && <AboutPage />}
       {currentPage === 'testimonials' && <TestimonialsPage />}
       {currentPage === 'contact' && <ContactPage />}
+      {currentPage === 'auth' && <AuthPage onNavigate={navigateTo} />}
 
       <footer id="footer-contact" className="border-t border-slate-200 bg-white pt-20 pb-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
