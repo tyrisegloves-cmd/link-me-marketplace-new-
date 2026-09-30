@@ -40,9 +40,9 @@ export function TestimonialsPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-100">
             LinkMe Stories
           </span>
-          <h3 className="mt-6 text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900">
+          <h5 className="mt-6 text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900">
             Through Link Me, looking for services around your area just got better and no stress wahala!
-          </h3>
+          </h5>
           
         </div>
 
