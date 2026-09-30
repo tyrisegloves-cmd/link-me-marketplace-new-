@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { RippleButton } from '../components/RippleButton';
 import type { PageType } from '../types';
 
