@@ -525,7 +525,9 @@ export function AuthPage({ initialMode = 'signin', onNavigate }: AuthPageProps) 
                 {/* Submit Button */}
                 <div className="pt-2">
                   <RippleButton
+                    type="submit"
                     rippleColor="rgba(255,255,255,0.4)"
+                    disabled={loading}
                     className="w-full py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-md shadow-blue-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70"
                   >
                     {loading ? (
