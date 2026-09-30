@@ -77,6 +77,7 @@ export default function App() {
 
   const heroRef = useRef<HTMLElement>(null);
   const servicesRef = useRef<HTMLElement>(null);
+  const lenisRef = useRef<Lenis | null>(null);
 
   // Lenis smooth scroll
   useEffect(() => {
@@ -86,18 +87,19 @@ export default function App() {
       smoothWheel: true,
       touchMultiplier: 1.5,
     });
+    lenisRef.current = lenis;
 
-    // @ts-ignore
     lenis.on('scroll', ({ scroll }: { scroll: number }) => {
       setScrolled(scroll > 64);
       setShowTop(scroll > 650);
     });
 
-    function raf(time: number) {
+    let animationFrameId: number;
+    const raf = (time: number) => {
       lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+      animationFrameId = requestAnimationFrame(raf);
+    };
+    animationFrameId = requestAnimationFrame(raf);
 
     // smooth anchor links
     const handleClick = (e: Event) => {
@@ -116,6 +118,8 @@ export default function App() {
 
     return () => {
       document.removeEventListener('click', handleClick);
+      cancelAnimationFrame(animationFrameId);
+      lenisRef.current = null;
       lenis.destroy();
     };
   }, []);
@@ -133,21 +137,15 @@ export default function App() {
 
 
   const scrollToServices = () => {
-    servicesRef.current?.scrollIntoView({ behavior: 'auto' });
-    // lenis will smooth it because we intercept anchor click – fallback manual
-    // @ts-ignore
-    window.lenis?.scrollTo?.(servicesRef.current, { offset: -80 });
-    if (servicesRef.current) {
-      // basic smooth fallback
-      const target = servicesRef.current;
-      const top = target.getBoundingClientRect().top + window.scrollY - 70;
-      window.scrollTo({ top, behavior: 'auto' });
-      // lenis already smooths via raf so if no direct call it's fine
+    const services = servicesRef.current;
+    if (!services) return;
+
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(services, { offset: -70, duration: 1.2 });
+      return;
     }
-    // Use anchor
-    setTimeout(() => {
-      document.querySelector('#services')?.scrollIntoView({ behavior: 'smooth' });
-    }, 0);
+
+    services.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
