@@ -21,9 +21,38 @@ import { TestimonialsPage } from './pages/TestimonialsPage';
 import { ContactPage } from './pages/ContactPage';
 import { AuthPage } from './pages/AuthPage';
 
+const navigationStorageKey = 'link-me:navigation-history';
+const pageTypes: PageType[] = ['home', 'marketplace', 'about', 'testimonials', 'contact', 'auth'];
+
+function loadSavedHistory(): PageType[] {
+  try {
+    const savedHistory = window.localStorage.getItem(navigationStorageKey);
+    if (!savedHistory) return ['home'];
+
+    const parsedHistory: unknown = JSON.parse(savedHistory);
+    if (!Array.isArray(parsedHistory)) return ['home'];
+
+    const validHistory = parsedHistory.filter(
+      (page): page is PageType => typeof page === 'string' && pageTypes.includes(page as PageType),
+    );
+
+    return validHistory.length > 0 ? validHistory.slice(-20) : ['home'];
+  } catch {
+    return ['home'];
+  }
+}
+
 export default function App() {
-  const [history, setHistory] = useState<PageType[]>(['home']);
+  const [history, setHistory] = useState<PageType[]>(loadSavedHistory);
   const currentPage = history[history.length - 1];
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(navigationStorageKey, JSON.stringify(history.slice(-20)));
+    } catch {
+      // Navigation should continue working if browser storage is unavailable.
+    }
+  }, [history]);
 
   // Wave transition state
   const [wave, setWave] = useState<{ active: boolean; x: number; y: number; target: PageType | null; isBack: boolean }>({
@@ -285,18 +314,7 @@ export default function App() {
               <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
-              Back to{' '}
-              {history[history.length - 2] === 'home'
-                ? 'Home'
-                : history[history.length - 2] === 'about'
-                ? 'About Us'
-                : history[history.length - 2] === 'testimonials'
-                ? 'Testimonials'
-                : history[history.length - 2] === 'contact'
-                ? 'Contact Us'
-                : history[history.length - 2] === 'auth'
-                ? 'Sign In / Up'
-                : 'Marketplace'}
+              Back
             </RippleButton>
           </motion.div>
         )}
