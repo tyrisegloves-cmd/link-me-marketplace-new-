@@ -50,10 +50,10 @@ export function AboutPage() {
         {/* Stats Grid */}
         <div className="mt-16 grid grid-cols-2 gap-6 lg:grid-cols-4">
           {[
-            { label: 'Verified Service Pros', val: '2,400+' },
+            { label: 'Verified Service Pros', val: '5,000+' },
             { label: 'Completed Home Jobs', val: '50,000+' },
-            { label: 'Avg Customer Rating', val: '4.9 / 5.0' },
-            { label: 'Earned by Local Pros', val: '$4.8M+' },
+            { label: 'Avg Customer Rating', val: '4.5+' },
+            { label: 'Earned by Local Pros', val: 'GHS 10,000+' },
           ].map((stat, i) => (
             <motion.div
               key={i}

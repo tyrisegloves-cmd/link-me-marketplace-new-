@@ -26,7 +26,7 @@ export function TestimonialsPage() {
             Community Stories
           </span>
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
-            Trusted by over 40,000 local homeowners & businesses
+            Trusted by over 40,000+ local homeowners & businesses
           </h1>
           <p className="text-lg text-slate-200/90 leading-relaxed max-w-2xl mx-auto">
             Read real, unfiltered feedback from customers who booked emergency repairs, recurring cleanings, and event specialists through Link Me.
@@ -38,14 +38,12 @@ export function TestimonialsPage() {
         {/* Hero */}
         <div className="text-center max-w-3xl mx-auto mb-16 bg-white rounded-3xl p-8 shadow-xl -mt-10">
           <span className="text-xs font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-100">
-            Community Stories
+            LinkMe Stories
           </span>
           <h1 className="mt-6 text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900">
-            Trusted by over 40,000 local homeowners & businesses
+            Through Link Me, looking for services around your area just got better and no stress wahala!
           </h1>
-          <p className="mt-4 text-lg text-slate-600">
-            Read real, unfiltered feedback from customers who booked emergency repairs, recurring cleanings, and event specialists through Link Me.
-          </p>
+          
         </div>
 
         {/* Category Filter */}
@@ -111,7 +109,7 @@ export function TestimonialsPage() {
             <>
               <h3 className="text-2xl font-bold text-slate-900">Have a Link Me story to share?</h3>
               <p className="text-slate-500 text-sm mt-2">
-                Did a professional save your day? Submit your review and get $15 credit towards your next service request!
+                Did a professional save your day? Submit a review and get a 10% credit reward towards your next service request!
               </p>
               <div className="mt-6 space-y-3 text-left">
                 <input
@@ -138,7 +136,7 @@ export function TestimonialsPage() {
             <div className="py-6">
               <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">✓</div>
               <h4 className="text-xl font-bold text-slate-900">Thank you for your review!</h4>
-              <p className="text-sm text-slate-600 mt-1">Your feedback has been submitted for moderation. Your $15 credit code has been emailed.</p>
+              <p className="text-sm text-slate-600 mt-1">Your feedback has been submitted for moderation. Your 10% credit code has been sent to your email.</p>
             </div>
           )}
         </div>
