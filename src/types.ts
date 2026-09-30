@@ -20,4 +20,4 @@ export interface Category {
   icon: ReactNode;
 }
 
-export type PageType = 'home' | 'marketplace' | 'about' | 'testimonials' | 'contact' | 'auth';
+export type PageType = 'home' | 'marketplace' | 'about' | 'testimonials' | 'contact';
