@@ -2,15 +2,15 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { categories, providers, SearchIcon, StarIcon, VerifiedIcon, LocationIcon } from '../data';
 import { ProfileModal } from '../components/ProfileModal';
-import { QuoteModal } from '../components/QuoteModal';
+import { BookingModal } from '../components/BookingModal';
 import type { ServiceProvider } from '../types';
 
 export function MarketplacePage() {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [sortBy, setSortBy] = useState<'rating' | 'reviews' | 'name'>('rating');
-  const [quoteProvider, setQuoteProvider] = useState<ServiceProvider | null>(null);
   const [selectedProfile, setSelectedProfile] = useState<ServiceProvider | null>(null);
+  const [bookingProvider, setBookingProvider] = useState<ServiceProvider | null>(null);
 
   const filteredProviders = useMemo(() => {
     const q = search.toLowerCase();
@@ -31,10 +31,6 @@ export function MarketplacePage() {
       return a.name.localeCompare(b.name);
     });
   }, [search, activeCategory, sortBy]);
-
-  const handleRequestQuote = (p: ServiceProvider) => {
-    setQuoteProvider(p);
-  };
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-slate-50/60">
@@ -198,11 +194,11 @@ export function MarketplacePage() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
-                        handleRequestQuote(p);
+                        setBookingProvider(p);
                       }}
                       className="rounded-xl bg-slate-900 py-3 text-sm font-bold text-white transition-all hover:bg-blue-600 shadow-sm hover:shadow-md"
                     >
-                      Request Quote
+                      Book now
                     </button>
                   </div>
                 </motion.div>
@@ -233,11 +229,9 @@ export function MarketplacePage() {
         </div>
       </div>
 
-      {/* Quote Modal */}
-      <QuoteModal provider={quoteProvider} onClose={() => setQuoteProvider(null)} />
-
       {/* Profile Modal */}
       <ProfileModal provider={selectedProfile} onClose={() => setSelectedProfile(null)} />
+      <BookingModal provider={bookingProvider} onClose={() => setBookingProvider(null)} />
     </div>
   );
 }
