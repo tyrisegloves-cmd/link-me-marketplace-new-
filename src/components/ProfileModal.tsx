@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ServiceProvider } from '../types';
 import { StarIcon, VerifiedIcon, LocationIcon } from '../data';
-import { QuoteModal } from './QuoteModal';
+import { BookingModal } from './BookingModal';
 
 interface ProfileModalProps {
   provider: ServiceProvider | null;
@@ -11,7 +11,7 @@ interface ProfileModalProps {
 
 export function ProfileModal({ provider, onClose }: ProfileModalProps) {
   const [activeTab, setActiveTab] = useState<'about' | 'reviews'>('about');
-  const [quoteProvider, setQuoteProvider] = useState<ServiceProvider | null>(null);
+  const [bookingProvider, setBookingProvider] = useState<ServiceProvider | null>(null);
 
   const reviews = [
     { name: 'Jordan L.', date: '2 weeks ago', rating: 5, text: 'Absolutely fantastic work! Showed up on time, professional and friendly. Would definitely book again.' },
@@ -22,7 +22,7 @@ export function ProfileModal({ provider, onClose }: ProfileModalProps) {
   return (
     <>
       <AnimatePresence>
-        {provider && !quoteProvider && (
+        {provider && !bookingProvider && (
           <motion.div
             className="fixed inset-0 z-[200] flex items-end sm:items-center justify-center p-0 sm:p-4"
             initial={{ opacity: 0 }}
@@ -145,13 +145,13 @@ export function ProfileModal({ provider, onClose }: ProfileModalProps) {
                 </AnimatePresence>
               </div>
 
-              {/* Request Quote Button */}
+              {/* Booking Button */}
               <div className="px-6 py-4 border-t border-slate-100 bg-white">
                 <button
-                  onClick={() => setQuoteProvider(provider)}
+                  onClick={() => setBookingProvider(provider)}
                   className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm transition-colors shadow-lg shadow-blue-500/25"
                 >
-                  Request Quote & Chat →
+                  Book now
                 </button>
               </div>
             </motion.div>
@@ -159,12 +159,11 @@ export function ProfileModal({ provider, onClose }: ProfileModalProps) {
         )}
       </AnimatePresence>
 
-      {/* Quote flow */}
-      {quoteProvider && (
-        <QuoteModal
-          provider={quoteProvider}
+      {bookingProvider && (
+        <BookingModal
+          provider={bookingProvider}
           onClose={() => {
-            setQuoteProvider(null);
+            setBookingProvider(null);
             onClose();
           }}
         />

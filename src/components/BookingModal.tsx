@@ -59,7 +59,7 @@ export function BookingModal({ provider, onClose }: BookingModalProps) {
                   <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-2xl text-white">✓</div>
                   <h3 className="mt-5 text-2xl font-extrabold text-slate-900">Your request has been sent</h3>
                   <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-600">{provider.name} will review your request for {formatAppointment(date, time)}. You’ll receive a notification when they respond.</p>
-                  <button onClick={() => setChatOpen(true)} className="mt-7 rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-500">Chat with Agent</button>
+                  <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row"><button onClick={() => setChatOpen(true)} className="rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition hover:bg-blue-500">Chat with Agent</button><button onClick={onClose} className="rounded-xl border border-slate-200 px-5 py-3 text-sm font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600">Book another service</button></div>
                 </div>
               ) : (
                 <div className="p-5 sm:p-7">
