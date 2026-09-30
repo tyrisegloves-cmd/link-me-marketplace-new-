@@ -246,7 +246,7 @@ export function AuthPage({ initialMode = 'signin', onNavigate }: AuthPageProps) 
               {/* Role Selection */}
               <div className="mt-5">
                 <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-                  I want to:
+                  I am a/an:
                 </label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
@@ -264,7 +264,7 @@ export function AuthPage({ initialMode = 'signin', onNavigate }: AuthPageProps) 
                       </svg>
                     </div>
                     <div>
-                      <p className="text-xs font-bold">Hire Services</p>
+                      <p className="text-xs font-bold">Customer</p>
                       <p className="text-[11px] text-slate-500">Find top professionals</p>
                     </div>
                   </button>
@@ -284,7 +284,7 @@ export function AuthPage({ initialMode = 'signin', onNavigate }: AuthPageProps) 
                       </svg>
                     </div>
                     <div>
-                      <p className="text-xs font-bold">Offer Services</p>
+                      <p className="text-xs font-bold">Agent</p>
                       <p className="text-[11px] text-slate-500">List as a verified pro</p>
                     </div>
                   </button>
