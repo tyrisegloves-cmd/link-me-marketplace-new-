@@ -1,16 +1,24 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { categories, providers, SearchIcon, StarIcon, VerifiedIcon, LocationIcon } from '../data';
 import { ProfileModal } from '../components/ProfileModal';
 import { BookingModal } from '../components/BookingModal';
 import type { ServiceProvider } from '../types';
 
-export function MarketplacePage() {
+interface MarketplacePageProps {
+  initialSearch?: string;
+}
+
+export function MarketplacePage({ initialSearch = '' }: MarketplacePageProps) {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [sortBy, setSortBy] = useState<'rating' | 'reviews' | 'name'>('rating');
   const [selectedProfile, setSelectedProfile] = useState<ServiceProvider | null>(null);
   const [bookingProvider, setBookingProvider] = useState<ServiceProvider | null>(null);
+
+  useEffect(() => {
+    setSearch(initialSearch);
+  }, [initialSearch]);
 
   const filteredProviders = useMemo(() => {
     const q = search.toLowerCase();

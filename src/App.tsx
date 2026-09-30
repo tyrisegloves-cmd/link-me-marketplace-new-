@@ -101,6 +101,7 @@ export default function App() {
 
   const [splashDone, setSplashDone] = useState(false);
   const [search, setSearch] = useState('');
+  const [marketplaceSearch, setMarketplaceSearch] = useState('');
   const [scrolled, setScrolled] = useState(false);
   const [showTop, setShowTop] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState<typeof providers[0] | null>(null);
@@ -387,13 +388,19 @@ export default function App() {
                   <input
                     value={search}
                     onChange={(e)=>setSearch(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        setMarketplaceSearch(search.trim());
+                        navigateTo('marketplace');
+                      }
+                    }}
                     placeholder="What do you need help with?"
                     className="h-[54px] flex-1 bg-transparent border-0 outline-none text-[15.5px] text-white placeholder:text-white/50 px-3"
                   />
                   <button
-                    onClick={() => {
-                      // nudge scroll to services
-                      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    onClick={(e) => {
+                      setMarketplaceSearch(search.trim());
+                      triggerWave(e, 'marketplace');
                     }}
                     className="hidden sm:inline-flex rounded-[14px] bg-indigo-600 hover:bg-indigo-500 px-[22px] py-[13px] text-[14px] font-[630] text-white transition-colors shadow"
                   >
@@ -706,7 +713,7 @@ export default function App() {
         </>
       )}
 
-      {currentPage === 'marketplace' && <MarketplacePage />}
+      {currentPage === 'marketplace' && <MarketplacePage initialSearch={marketplaceSearch} />}
       {currentPage === 'about' && <AboutPage />}
       {currentPage === 'testimonials' && <TestimonialsPage />}
       {currentPage === 'contact' && <ContactPage />}
