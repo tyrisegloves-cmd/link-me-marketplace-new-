@@ -421,11 +421,11 @@ export default function App() {
               transition={{ delay: 0.95, duration: 0.55 }}
               className="mt-12 flex items-center justify-center gap-9 text-[13px] text-white/60"
             >
-              <div>⏳ Avg reply <span className="text-white">9 min</span></div>
+              <div> Convinent & <span className="text-white">Reliable</span></div>
               <div className="h-4 w-px bg-white/18" />
-              <div>★ 4.8/5 average</div>
+              <div>★ 4.8+ ratings</div>
               <div className="h-4 w-px bg-white/18" />
-              <div>✓ 2,412 verified</div>
+              <div>✓ 5000+ verified</div>
             </motion.div>
           </div>
         </div>
@@ -438,7 +438,7 @@ export default function App() {
           transition={{ delay: 1.2 }}
           className="absolute left-1/2 bottom-8 -translate-x-1/2 flex flex-col items-center gap-2 text-white/56 hover:text-white transition-colors"
         >
-          <span className="text-[11px] uppercase tracking-wider">Scroll</span>
+          <span className="text-[11px] uppercase tracking-wider">Let's go!</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 1.55, ease: 'easeInOut' }}
@@ -463,10 +463,10 @@ export default function App() {
                   Featured Professionals
                 </span>
                 <h2 className="mt-4 text-[32px] sm:text-[38px] font-[760] tracking-[-0.018em] text-slate-900">
-                  Browse services near you
+                  Browse services near your vicinity
                 </h2>
                 <p className="mt-2 text-[16px] text-slate-500">
-                  Hand-picked top-rated professionals. Click a card to view their full profile.
+                  Hand-picked top-rated professionals tailored to your needs.
                 </p>
               </div>
               <RippleButton
@@ -474,7 +474,7 @@ export default function App() {
                 onClick={(e) => triggerWave(e, 'marketplace')}
                 className="shrink-0 inline-flex items-center gap-2 rounded-[14px] border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-5 py-3 text-[14px] font-[700] transition-all cursor-pointer"
               >
-                View All Professionals
+                View All Picks
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -500,7 +500,7 @@ export default function App() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
-                    View profile
+                    View agent
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -547,7 +547,7 @@ export default function App() {
                       }}
                       className="text-[12.5px] font-[700] text-white bg-slate-900 hover:bg-blue-600 transition-colors px-4 py-2 rounded-xl shadow-sm"
                     >
-                      Request Quote
+                      Book Service
                     </button>
                   </div>
                 </motion.div>
@@ -565,7 +565,7 @@ export default function App() {
               <div className="absolute right-0 top-0 w-64 h-64 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
               <div className="relative text-center sm:text-left">
                 <p className="text-white font-bold text-lg">
-                  Showing 3 of <span className="text-blue-400">2,400+</span> verified professionals
+                  Showcasing our wide range of <span className="text-blue-400">5,000+</span> verified professionals
                 </p>
                 <p className="text-slate-400 text-sm mt-1">
                   Filter by category, location, rating and more in the full marketplace.
@@ -576,7 +576,7 @@ export default function App() {
                 onClick={(e) => triggerWave(e, 'marketplace')}
                 className="relative shrink-0 inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-[14px] shadow-lg shadow-blue-900/40 transition-colors cursor-pointer"
               >
-                Explore Full Marketplace
+                Explore  Marketplace
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -593,7 +593,7 @@ export default function App() {
             <Reveal y={22}>
               <div className="text-center max-w-[690px] mx-auto">
                 <h2 className="text-[34px] sm:text-[40px] font-[760] tracking-[-0.018em] text-slate-900">How Link Me works</h2>
-                <p className="mt-3 text-[17px] text-slate-600">Get help in three simple steps</p>
+                <p className="mt-3 text-[17px] text-slate-600">Get the help you need in three simple steps</p>
               </div>
             </Reveal>
 
@@ -644,7 +644,7 @@ export default function App() {
             <Reveal>
               <div className="text-center">
                 <h2 className="text-[34px] sm:text-[39px] font-[760] tracking-[-0.018em]">Loved by locals</h2>
-                <p className="mt-3 text-[17px] text-slate-600">Real stories from real customers</p>
+                <p className="mt-3 text-[17px] text-slate-600">View real stories from our satisfied customers</p>
               </div>
             </Reveal>
 
@@ -677,9 +677,9 @@ export default function App() {
               <div className="rounded-[30px] bg-[#0f111b] text-white px-[32px] sm:px-[56px] py-[70px] sm:py-[82px] text-center relative overflow-hidden">
                 <div className="absolute inset-0 opacity-[0.44]" style={{ backgroundImage: 'radial-gradient(60% 80% at 70% 20%, rgba(124,58,237,0.25), transparent 60%), radial-gradient(42% 55% at 14% 80%, rgba(59,130,246,0.2), transparent 60%)' }} />
                 <div className="relative">
-                  <h3 className="text-[30px] sm:text-[40px] font-[750] tracking-[-0.018em]">Ready to get things done?</h3>
+                  <h3 className="text-[30px] sm:text-[40px] font-[750] tracking-[-0.018em]"> You ready to get started?</h3>
                   <p className="mt-[12px] max-w-[620px] mx-auto text-[17px] leading-relaxed text-slate-300">
-                    Join thousands of locals who use Link Me to find reliable help for any task, any time.
+                    Join thousands of people who use Link Me to find reliable help for any task, any where, any time.
                   </p>
                    <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
                      <RippleButton
@@ -687,14 +687,14 @@ export default function App() {
                        onClick={(e) => triggerWave(e, 'marketplace')}
                        className="inline-flex items-center gap-2 rounded-[14px] bg-indigo-600 hover:bg-indigo-500 px-[24px] py-[13px] text-[14.5px] font-[630] text-white shadow-lg shadow-indigo-950/35 transition-colors cursor-pointer"
                      >
-                       Find a Service <ArrowRightIcon />
+                       Find Your Service <ArrowRightIcon />
                      </RippleButton>
                      <RippleButton
                        rippleColor="rgba(255,255,255,0.25)"
                        onClick={(e) => triggerWave(e, 'contact')}
                        className="rounded-[14px] border border-slate-640 bg-slate-800/85 px-[24px] py-[13px] text-[14.5px] font-[600] text-white hover:bg-slate-700 transition-colors cursor-pointer"
                      >
-                       List Your Business
+                        Contact Us
                      </RippleButton>
                    </div>
                 </div>
